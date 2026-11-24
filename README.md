@@ -36,7 +36,7 @@
 - 将图书加入书袋，调整数量或移除商品。
 - 结算时自动读取个人中心的默认收货地址。
 - 支持新建收货地址、切换默认地址和删除地址。
-- 下单时写入订单、订单明细并扣减库存。
+- 下单时在事务中写入订单、订单明细和通知；当前版本尚未在下单时扣减库存。
 - 管理员可以更新订单状态。
 
 #### 我的纸灯
@@ -134,7 +134,7 @@ job2/
 先确认 MySQL 服务已启动，然后在项目根目录执行：
 
 ```bash
-mysql -uroot -p1234 < schema.sql
+mysql -uroot -p < schema.sql
 ```
 
 如果命令行提示数据库不存在，先执行：
@@ -154,7 +154,7 @@ PORT=3001
 DB_HOST=localhost
 DB_PORT=3306
 DB_USER=root
-DB_PASSWORD=1234
+DB_PASSWORD=your_mysql_password
 DB_NAME=bookstore
 ```
 
@@ -282,7 +282,7 @@ Authorization: Bearer <登录接口返回的 token>
 1. 检查 MySQL 服务是否启动。
 2. 检查 `localhost:3306` 是否可以连接。
 3. 检查 `.env` 中的账号、密码和数据库名。
-4. 重新执行 `mysql -uroot -p1234 < schema.sql`。
+4. 重新执行 `mysql -uroot -p < schema.sql`。
 5. 重启 `npm run dev`。
 
 ### 端口被占用
